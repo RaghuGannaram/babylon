@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../styles/footer.module.css";
 
 const getCurrentYear = () => {
@@ -22,24 +23,24 @@ function Footer() {
                     <h3 className={styles.heading}>Quick Links</h3>
                     <ul className={styles.list}>
                         <li>
-                            <a className={styles.link} href="/">
+                            <Link className={styles.link} href="/">
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className={styles.link} href="/search">
+                            <Link className={styles.link} href="/search">
                                 Search
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className={styles.link} href="/about">
+                            <Link className={styles.link} href="/about">
                                 About
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className={styles.link} href="/contact">
+                            <Link className={styles.link} href="/contact">
                                 Contact
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -48,19 +49,19 @@ function Footer() {
                     <h3 className={styles.heading}>Follow Us</h3>
                     <ul className={styles.list}>
                         <li>
-                            <a className={styles.link} href="https://facebook.com" target="_blank">
+                            <Link className={styles.link} href="https://facebook.com" target="_blank">
                                 Facebook
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className={styles.link} href="https://twitter.com" target="_blank">
+                            <Link className={styles.link} href="https://twitter.com" target="_blank">
                                 Twitter
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className={styles.link} href="https://instagram.com" target="_blank">
+                            <Link className={styles.link} href="https://instagram.com" target="_blank">
                                 Instagram
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>

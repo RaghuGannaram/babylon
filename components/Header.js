@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styles from "../styles/header.module.css";
 
 function header() {
@@ -8,24 +9,24 @@ function header() {
             <nav className={styles.nav}>
                 <ul className={styles.list}>
                     <li>
-                        <a className={styles.link} href="/">
+                        <Link className={styles.link} href="/">
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/search">
+                        <Link className={styles.link} href="/search">
                             Search
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/about">
+                        <Link className={styles.link} href="/about">
                             About
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a className={styles.link} href="/contact">
+                        <Link className={styles.link} href="/contact">
                             Contact
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>
