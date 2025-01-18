@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+}
+
+.heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #3f3f3f;
+    padding-left: 3rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+}
+
+.link {
+    margin-right: 2rem;
+    text-decoration: none;
+    color: #333;
+}

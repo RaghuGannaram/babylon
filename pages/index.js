@@ -1,10 +1,13 @@
+import { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
 import styles from "../styles/home.module.css";
-import Footer from "../components/footer";
+import CustomImage from "../components/CustomImage";
+import { API_URL_LIST } from "../constants";
 
 function Home(props) {
+    const { movies: initialMovies } = props;
+    const [movies, setMovies] = useState(initialMovies);
+
     return (
         <>
             <Head>
@@ -17,23 +20,38 @@ function Home(props) {
             </Head>
 
             <main className={styles.main}>
-                <h1> Welcome to Babylon </h1>
+                <section className={styles.banner}>
+                    <h1 className={styles.title}>Welcome to Babylon.!</h1>
+                    <p className={styles.description}>
+                        Babylon is a comprehensive movie database offering detailed information, timeless stories, and
+                        cinematic treasures from across the ages. Explore movies, discover hidden gems, and delve into
+                        the rich world of cinema.
+                    </p>
+                </section>
 
                 <section className={styles.container}>
-                    {/* {props.movies.map((movie) => (
-                        <div key={movie.imdbID} className={styles.card}>
-                            <Image src={movie.Poster} alt={movie.Title} width={300} height={450} />
-                            <h2>{movie.Title}</h2>
-                            <p>{movie.Year}</p>
-                            <Link href={`/movies/${movie.imdbID}`}>
-                                <a className={styles.link}>Read More</a>
-                            </Link>
-                        </div>
-                    ))} */}
+                    {movies.map((movie) => {
+                        return (
+                            <div key={movie.id} className={styles.card}>
+                                <CustomImage
+                                    src={movie.primaryImage.url}
+                                    alt={movie.primaryImage.caption.plainText}
+                                    width={200}
+                                    height={300}
+                                    styles={{ borderRadius: "10px" }}
+                                    handleError={() => {
+                                        const updatedMovies = [
+                                            ...movies.filter((prevMovie) => prevMovie.id !== movie.id),
+                                        ];
+
+                                        setMovies(updatedMovies);
+                                    }}
+                                />
+                            </div>
+                        );
+                    })}
                 </section>
             </main>
-
-            <Footer />
         </>
     );
 }
@@ -42,23 +60,39 @@ export default Home;
 
 export async function getStaticProps() {
     const apiKey = process.env.RAPIDAPI_KEY;
+    const baseUrl = API_URL_LIST.topBoxOffice;
 
-    const response = await fetch("https://moviesdatabase.p.rapidapi.com/titles", {
-        method: "GET",
-        headers: {
-            "x-rapidapi-host": "moviesdatabase.p.rapidapi.com",
-            "x-rapidapi-key": apiKey,
-        },
-    });
-    const data = await response.json();
-
-    console.log("zetex", data);
-
-    return {
-        props: {
-            movies: data,
-        },
+    const headers = {
+        "x-rapidapi-host": "moviesdatabase.p.rapidapi.com",
+        "x-rapidapi-key": apiKey,
     };
+
+    const pageNumbers = [1, 2, 3, 4, 5];
+
+    try {
+        const responses = await Promise.all(
+            pageNumbers.map((page) =>
+                fetch(`${baseUrl}&page=${page}`, {
+                    method: "GET",
+                    headers,
+                }).then((res) => res.json())
+            )
+        );
+
+        const movies = responses.flatMap((response) => response.results || []).slice(0, 50);
+
+        return {
+            props: {
+                movies,
+            },
+        };
+    } catch (error) {
+        console.error("Error fetching movies:", error);
+
+        return {
+            props: {
+                movies: [],
+            },
+        };
+    }
 }
-
-

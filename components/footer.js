@@ -48,17 +48,17 @@ function Footer() {
                     <h3 className={styles.heading}>Follow Us</h3>
                     <ul className={styles.list}>
                         <li>
-                            <a className={styles.link} href="https://facebook.com">
+                            <a className={styles.link} href="https://facebook.com" target="_blank">
                                 Facebook
                             </a>
                         </li>
                         <li>
-                            <a className={styles.link} href="https://twitter.com">
+                            <a className={styles.link} href="https://twitter.com" target="_blank">
                                 Twitter
                             </a>
                         </li>
                         <li>
-                            <a className={styles.link} href="https://instagram.com">
+                            <a className={styles.link} href="https://instagram.com" target="_blank">
                                 Instagram
                             </a>
                         </li>
