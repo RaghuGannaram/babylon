@@ -1,0 +1,48 @@
+.footer {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.heading {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.link {
+    color: #f4f4f4;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+.bottom {
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    font-size: 14px;
+}
