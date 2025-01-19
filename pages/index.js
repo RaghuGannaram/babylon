@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Head from "next/head";
-import styles from "../styles/home.module.css";
+import Link from "next/link";
 import CustomImage from "../components/CustomImage";
-import { API_URL_LIST } from "../constants";
+import { HOST, API_ENDPOINTS } from "../constants";
+import styles from "../styles/home.module.css";
 
 function Home(props) {
     const { movies: initialMovies } = props;
@@ -33,20 +34,22 @@ function Home(props) {
                     {movies.map((movie) => {
                         return (
                             <div key={movie.id} className={styles.card}>
-                                <CustomImage
-                                    src={movie.primaryImage.url}
-                                    alt={movie.primaryImage.caption.plainText}
-                                    width={200}
-                                    height={300}
-                                    styles={{ borderRadius: "10px" }}
-                                    handleError={() => {
-                                        const updatedMovies = [
-                                            ...movies.filter((prevMovie) => prevMovie.id !== movie.id),
-                                        ];
+                                <Link href={`/movie/${movie.id}`}>
+                                    <CustomImage
+                                        src={movie.primaryImage.url}
+                                        alt={movie.primaryImage.caption.plainText}
+                                        width={200}
+                                        height={300}
+                                        styles={{ borderRadius: "10px" }}
+                                        handleError={() => {
+                                            const updatedMovies = [
+                                                ...movies.filter((prevMovie) => prevMovie.id !== movie.id),
+                                            ];
 
-                                        setMovies(updatedMovies);
-                                    }}
-                                />
+                                            setMovies(updatedMovies);
+                                        }}
+                                    />
+                                </Link>
                             </div>
                         );
                     })}
@@ -60,10 +63,10 @@ export default Home;
 
 export async function getStaticProps() {
     const apiKey = process.env.RAPIDAPI_KEY;
-    const baseUrl = API_URL_LIST.topBoxOffice;
+    const url = API_ENDPOINTS.LISTS.TOP_BOX_OFFICE;
 
     const headers = {
-        "x-rapidapi-host": "moviesdatabase.p.rapidapi.com",
+        "x-rapidapi-host": HOST,
         "x-rapidapi-key": apiKey,
     };
 
@@ -72,7 +75,7 @@ export async function getStaticProps() {
     try {
         const responses = await Promise.all(
             pageNumbers.map((page) =>
-                fetch(`${baseUrl}&page=${page}`, {
+                fetch(`${url}&page=${page}`, {
                     method: "GET",
                     headers,
                 }).then((res) => res.json())

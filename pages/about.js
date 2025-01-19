@@ -1,6 +1,6 @@
 import React from "react";
 
-function about() {
+function About() {
     return (
         <main>
             <h1>About Babylon</h1>
@@ -13,4 +13,4 @@ function about() {
     );
 }
 
-export default about;
+export default About;

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styles from "../styles/header.module.css";
 
-function header() {
+function Header() {
     return <header>
         <div className={styles.container}>
             <h1 className={styles.heading}>Babylon</h1>
@@ -34,4 +34,4 @@ function header() {
     </header>;
 }
 
-export default header;
+export default Header;
