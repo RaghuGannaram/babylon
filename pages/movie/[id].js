@@ -1,5 +1,7 @@
 import React from "react";
 import CustomImage from "../../components/CustomImage";
+import { FaStar, FaCalendarAlt, FaChartLine, FaInfoCircle } from "react-icons/fa";
+import { MdOutlineCategory } from "react-icons/md";
 import { HOST, API_ENDPOINTS } from "../../constants";
 import { generateURL } from "../../utils";
 import styles from "../../styles/movie.module.css";
@@ -26,43 +28,48 @@ function Movie(props) {
     }
 
     return (
-        <main>
+        <main className={styles.mainContainer}>
             <div className={styles.imageContainer}>
                 <CustomImage
                     src={movie.primaryImage.url}
                     alt={movie.primaryImage.caption.plainText || "Movie Image"}
                     width={300}
                     height={450}
-                    styles={{ borderRadius: "10px" }}
+                    styles={{ borderRadius: "10px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)" }}
                 />
                 <p className={styles.caption}>{movie.primaryImage.caption.plainText}</p>
             </div>
 
-            <div className={styles.details}>
-                <div className={styles.row}>
-                    <span className={styles.label}>Type:</span>
-                    <span>{movie.titleType.text}</span>
-                </div>
+            <div className={styles.detailsContainer}>
+                <h1 className={styles.title}>{movie.titleText.text}</h1>
 
                 <div className={styles.row}>
-                    <span className={styles.label}>Genres:</span>
+                    <span className={styles.label}>
+                        <MdOutlineCategory /> Genres:
+                    </span>
                     <span>{movie.genres.genres.map((genre) => genre.text).join(", ")}</span>
                 </div>
 
                 <div className={styles.row}>
-                    <span className={styles.label}>Rating:</span>
+                    <span className={styles.label}>
+                        <FaStar /> Rating:
+                    </span>
                     <span>
                         {movie.ratingsSummary.aggregateRating} ({movie.ratingsSummary.voteCount} votes)
                     </span>
                 </div>
 
                 <div className={styles.row}>
-                    <span className={styles.label}>Release Date:</span>
+                    <span className={styles.label}>
+                        <FaCalendarAlt /> Release Date:
+                    </span>
                     <span>{`${movie.releaseDate.day}/${movie.releaseDate.month}/${movie.releaseDate.year}`}</span>
                 </div>
 
                 <div className={styles.row}>
-                    <span className={styles.label}>Current Rank:</span>
+                    <span className={styles.label}>
+                        <FaChartLine /> Current Rank:
+                    </span>
                     <span>
                         #{movie.meterRanking.currentRank}{" "}
                         <span className={styles.rankChange}>
@@ -73,7 +80,9 @@ function Movie(props) {
                 </div>
 
                 <div className={styles.row}>
-                    <span className={styles.label}>Plot:</span>
+                    <span className={styles.label}>
+                        <FaInfoCircle /> Plot:
+                    </span>
                     <p>{movie.plot.plotText.plainText}</p>
                 </div>
             </div>
@@ -85,7 +94,57 @@ export default Movie;
 
 export async function getStaticPaths() {
     return {
-        paths: [],
+        paths: [
+            { params: { id: "tt0076759" } },
+            { params: { id: "tt0083866" } },
+            { params: { id: "tt0107290" } },
+            { params: { id: "tt0109830" } },
+            { params: { id: "tt0110357" } },
+            { params: { id: "tt0116629" } },
+            { params: { id: "tt0119567" } },
+            { params: { id: "tt0119654" } },
+            { params: { id: "tt0121766" } },
+            { params: { id: "tt0121765" } },
+            { params: { id: "tt0120338" } },
+            { params: { id: "tt0120915" } },
+            { params: { id: "tt0120591" } },
+            { params: { id: "tt0120737" } },
+            { params: { id: "tt0145487" } },
+            { params: { id: "tt0167404" } },
+            { params: { id: "tt0167260" } },
+            { params: { id: "tt0167261" } },
+            { params: { id: "tt0198781" } },
+            { params: { id: "tt0234215" } },
+            { params: { id: "tt0241527" } },
+            { params: { id: "tt0266543" } },
+            { params: { id: "tt0295297" } },
+            { params: { id: "tt0298148" } },
+            { params: { id: "tt0304141" } },
+            { params: { id: "tt0316654" } },
+            { params: { id: "tt0317705" } },
+            { params: { id: "tt0325980" } },
+            { params: { id: "tt0330373" } },
+            { params: { id: "tt0335345" } },
+            { params: { id: "tt0360717" } },
+            { params: { id: "tt0363771" } },
+            { params: { id: "tt0367882" } },
+            { params: { id: "tt0369610" } },
+            { params: { id: "tt0371746" } },
+            { params: { id: "tt0373889" } },
+            { params: { id: "tt0381061" } },
+            { params: { id: "tt0382625" } },
+            { params: { id: "tt0382932" } },
+            { params: { id: "tt0383574" } },
+            { params: { id: "tt0398286" } },
+            { params: { id: "tt0407304" } },
+            { params: { id: "tt0413300" } },
+            { params: { id: "tt0413267" } },
+            { params: { id: "tt0417741" } },
+            { params: { id: "tt0435761" } },
+            { params: { id: "tt0438097" } },
+            { params: { id: "tt0441773" } },
+            { params: { id: "tt0448157" } },
+        ],
         fallback: true,
     };
 }
