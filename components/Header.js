@@ -14,19 +14,14 @@ function Header() {
                                 Home
                             </Link>
                         </li>
-                        {/* <li>
-                        <Link className={styles.link} href="/search">
-                            Search
-                        </Link>
-                    </li> */}
                         <li>
-                            <Link className={styles.link} href="/about">
-                                About
+                            <Link className={styles.link} href="/search">
+                                Search
                             </Link>
                         </li>
                         <li>
-                            <Link className={styles.link} href="/contact">
-                                Contact
+                            <Link className={styles.link} href="/about">
+                                About
                             </Link>
                         </li>
                     </ul>
