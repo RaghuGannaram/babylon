@@ -14,7 +14,7 @@ function About() {
             <section className={styles.contentSection}>
                 <h2>Our Mission</h2>
                 <p>
-                    At Babylon, we aim to bring the world of movies to your fingertips. Whether you're a casual viewer
+                    At Babylon, we aim to bring the world of movies to your fingertips. Whether you are a casual viewer
                     or a die-hard film enthusiast, Babylon offers a treasure trove of movie knowledge, from classic
                     cinema to the latest blockbusters. Dive into an ever-growing collection of films, discover
                     fascinating trivia, and enrich your movie-watching experience.
@@ -55,8 +55,8 @@ function About() {
             <section className={styles.contentSection}>
                 <h2>Join the Community</h2>
                 <p>
-                    Babylon is more than just a database—it's a community of movie lovers. Share your reviews, discuss
-                    your favorite films, and connect with like-minded individuals. Together, let's celebrate the magic
+                    Babylon is more than just a database—it is a community of movie lovers. Share your reviews, discuss
+                    your favorite films, and connect with like-minded individuals. Together, let us celebrate the magic
                     of cinema.
                 </p>
             </section>
